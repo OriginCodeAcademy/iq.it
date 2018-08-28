@@ -1,0 +1,39 @@
+{
+  "name": "game",
+  "plural": "games",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "winner": {
+      "type": "object",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "cards": {
+      "type": "hasMany",
+      "model": "card",
+      "foreignKey": "",
+      "options": {
+        "validate": false,
+        "forceId": false,
+        "persistent": true
+      }
+    },
+    "results": {
+      "type": "hasMany",
+      "model": "result",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": false,
+        "disableInclude": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

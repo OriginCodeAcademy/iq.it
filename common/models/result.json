@@ -1,0 +1,53 @@
+{
+  "name": "result",
+  "plural": "results",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "points": {
+      "type": "number",
+      "required": true
+    },
+    "selected": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "card": {
+      "type": "belongsTo",
+      "model": "card",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": false,
+        "disableInclude": true
+      }
+    },
+    "player": {
+      "type": "belongsTo",
+      "model": "player",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": false,
+        "disableInclude": true
+      }
+    },
+    "game": {
+      "type": "belongsTo",
+      "model": "game",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": false,
+        "disableInclude": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

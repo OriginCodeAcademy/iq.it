@@ -1,0 +1,48 @@
+{
+  "name": "card",
+  "plural": "cards",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "points": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "difficulty": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "answers": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "results": {
+      "type": "hasMany",
+      "model": "result",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

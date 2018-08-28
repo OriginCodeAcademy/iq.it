@@ -13,10 +13,6 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db",
-    "public": false
-  },
   "AccessToken": {
     "dataSource": "db",
     "public": false
@@ -44,7 +40,7 @@
     "dataSource": "db",
     "public": true
   },
-  "user": {
+  "player": {
     "dataSource": "db",
     "public": true
   },
@@ -54,6 +50,13 @@
   },
   "game": {
     "dataSource": "db",
-    "public": true
+    "public": true,
+    "options":{
+      "remoting": {
+        "sharedMethods": {
+          "getPlayers": true
+        }
+      }
+    }
   }
 }
