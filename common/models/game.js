@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = function(Game) {
-
   Game.getPlayers = function(id, cb) {
     const { Player, Result } = Game.app.models;
     Result.find({where: {gameId: id}})
