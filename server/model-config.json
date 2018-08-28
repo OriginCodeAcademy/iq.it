@@ -14,44 +14,44 @@
     ]
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": false
   },
   "card": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": true
   },
   "result": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": true
   },
   "player": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": true
   },
   "accessToken": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": true
   },
   "game": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": true,
-    "options":{
+    "options": {
       "remoting": {
         "sharedMethods": {
           "getPlayers": true
