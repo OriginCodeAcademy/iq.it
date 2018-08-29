@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint",
-    "test": "mocha server/*.spec.js --exit"
+    "test": "mocha test/**/*.spec.js --exit"
   },
   "dependencies": {
     "chai": "^4.1.2",
