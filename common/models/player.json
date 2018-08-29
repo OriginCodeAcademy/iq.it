@@ -28,17 +28,13 @@
     },
     "totalPoints": {
       "type": "number",
-      "required": true,
+      "required": false,
       "default": 0
     },
     "gamesPlayed": {
       "type": "number",
-      "required": true,
+      "required": false,
       "default": 0
-    },
-    "github": {
-      "type": "string",
-      "required": true
     }
   },
   "validations": [],
