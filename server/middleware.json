@@ -40,7 +40,13 @@
       ]
     }
   },
-  "files": {},
+  "files": {
+    "loopback#static": [{
+      "params": "$!../dist"
+      }, {
+      "params": "$!../client"
+    }]
+  },
   "final": {
     "loopback#urlNotFound": {}
   },

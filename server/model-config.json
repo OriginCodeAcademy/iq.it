@@ -23,14 +23,14 @@
   },
   "RoleMapping": {
     "dataSource": "MongoDB",
-    "public": false,
+    "public": true,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
     "dataSource": "MongoDB",
-    "public": false
+    "public": true
   },
   "card": {
     "dataSource": "MongoDB",
