@@ -1,5 +1,5 @@
 'use strict';
-
+const socketEvents = require('./socketEvents');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
@@ -27,13 +27,21 @@ boot(app, __dirname, function(err) {
   if (require.main === module) {
     app.io = require('socket.io')(app.start());
     app.io.on('connection', function(socket) {
-      console.log('a user connected');
-      socket.on('chat message', function(msg) {
-        console.log('message: ' + msg);
-        app.io.emit('chat message', msg);
+      console.log(`a user connected: ${socket.client.id}`);
+
+      socket.on('event', (event) => {
+        socketEvents.eventHandler(socket, event);
       });
+      socket.on('action', (action) => {
+        socketEvents.actionHandler(socket, action);
+      });
+
+      // socket.on('chat message', function(msg) {
+      //   console.log('message: ' + msg);
+      //   app.io.emit('chat message', msg);
+      // });
       socket.on('disconnect', function() {
-        console.log('user disconnected');
+        console.log(`user disconnected: ${socket.client.id}`);
       });
     });
   }
