@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { postLogin } from './actions';
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(postLogin({email: 'string@rick.com', password: 'password'}));
   }
 
   render() {

@@ -42,7 +42,14 @@
   },
   "player": {
     "dataSource": "MongoDB",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "getUserRole": true
+        }
+      }
+    }
   },
   "accessToken": {
     "dataSource": "MongoDB",

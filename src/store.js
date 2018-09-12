@@ -15,7 +15,7 @@ const history = createHashHistory();
 const isDevMode = process.env.NODE_ENV === 'development';
 
 // userFromServer will be on the global window
-const configureStore = (initialState = { user }) => {
+const configureStore = (initialState = { user: userFromServer }) => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
