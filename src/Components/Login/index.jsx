@@ -3,7 +3,10 @@ import Login from './Login';
 
 function mapStateToProps(store) {
   return {
-    user: store.loginReducer.user
+    userId: store.loginReducer.userId,
+    token: store.loginReducer.token,
+    email: store.loginReducer.email,
+    password: store.loginReducer.password
   }
 }
 

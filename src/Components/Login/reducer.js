@@ -1,4 +1,9 @@
-const initialState = {}
+const initialState = {
+  userId: null,
+  token: null,
+  email: '',
+  password: ''
+}
 
 export default function loginReducer(state = initialState, action) {
   const { payload, type } = action;
@@ -8,7 +13,7 @@ export default function loginReducer(state = initialState, action) {
       return {
         ...state,
         token: payload.id,
-        id: payload.userId
+        userId: payload.userId
       }
     }
     case 'POST_LOGIN_REJECTED': {

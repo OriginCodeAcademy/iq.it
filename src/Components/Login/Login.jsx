@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { postLogin } from './actions';
+import { Redirect } from 'react-router';
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(postLogin({email: 'string@rick.com', password: 'password'}));
+  submitLogin() {
+    const { dispatch, email, password } = this.props;
+    dispatch(postLogin({ email, password }));
   }
 
   render() {
+    if (this.props.token) {
+      return <Redirect push to="/waiting" />
+    }
+
     return (
       <div>
         <nav>
