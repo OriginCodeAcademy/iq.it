@@ -1,9 +1,13 @@
 'use strict';
 const socketEvents = require('./socketEvents');
+const path = require('path');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
+
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'ejs');
 
 app.start = function() {
   // start the web server

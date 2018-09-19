@@ -9,7 +9,7 @@
   "properties": {
     "username": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "email": {
       "type": "string",
@@ -20,11 +20,11 @@
     },
     "firstName": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "lastName": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "totalPoints": {
       "type": "number",
@@ -49,5 +49,6 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+  }
 }
