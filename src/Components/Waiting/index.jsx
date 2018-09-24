@@ -3,7 +3,7 @@ import Waiting from './Waiting';
 
 function mapStateToProps(store) {
   return {
-    user: store.waitingReducer.user
+    userId: store.loginReducer.userId
   }
 }
 
