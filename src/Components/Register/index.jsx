@@ -3,7 +3,11 @@ import Register from './Register';
 
 function mapStateToProps(store) {
   return {
-    user: store.registerReducer.user
+    firstName: store.registerReducer.firstName,
+    lastName: store.registerReducer.lastName,
+    email: store.registerReducer.email,
+    password: store.registerReducer.password,
+    confirmPassword: store.registerReducer.confirmPassword
   }
 }
 
