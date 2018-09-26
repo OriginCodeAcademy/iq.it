@@ -1,5 +1,9 @@
 const initialState = {
-  user: null
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
 }
 
 export default function registerReducer(state = initialState, action) {
@@ -12,8 +16,14 @@ export default function registerReducer(state = initialState, action) {
         user: payload
       }
     }
+    case 'REGISTER_INPUT': {
+      return {
+        ...state,
+        ...payload
+      }
+    }
     default: {
       return state
     }
-  }
+  }`
 }
