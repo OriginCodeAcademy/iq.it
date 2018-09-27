@@ -13,7 +13,7 @@ export default function registerReducer(state = initialState, action) {
     case 'REGISTER_FULFILLED': {
       return {
         ...state,
-        user: payload
+        user: payload.data
       }
     }
     case 'REGISTER_INPUT': {
@@ -25,5 +25,5 @@ export default function registerReducer(state = initialState, action) {
     default: {
       return state
     }
-  }`
+  }
 }

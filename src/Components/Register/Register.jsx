@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { register, registerInput } from './actions';
+import { Redirect } from 'react-router';
 
 export default class Register extends Component {
   constructor(props) {
@@ -20,14 +21,18 @@ export default class Register extends Component {
     event.preventDefault();
 
     if (this.props.confirmPassword === this.props.password) {
-      const { dispatch } = this.props;
-      dispatch(register(this.state))
+      const { dispatch, firstName, lastName, email, password } = this.props;
+      dispatch(register({ firstName, lastName, email, password }, dispatch ))
     } else {
       alert('Passwords do not match');
     }
   }
 
   render() {
+    if (this.props.token) {
+      return <Redirect push to="/waiting" />
+    }
+
     return (
       <div className='registration-container'>
         <div class='heading'>
