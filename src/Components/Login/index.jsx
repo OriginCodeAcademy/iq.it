@@ -3,11 +3,11 @@ import Login from './Login';
 
 function mapStateToProps(store) {
   return {
-    userId: store.loginReducer.userId,
-    token: store.loginReducer.token,
+    userId: store.user.userId,
+    token: store.user.token,
     email: store.loginReducer.email,
     password: store.loginReducer.password
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(Login);

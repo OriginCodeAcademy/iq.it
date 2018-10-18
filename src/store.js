@@ -1,12 +1,13 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 import { createHashHistory } from 'history';
-import { routerMiddleware, routerActions } from 'react-router-redux';
+import { routerActions, routerMiddleware } from 'react-router-redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
-import createSocketIoMiddleware from 'redux-socket.io';
 import promiseMiddleware from 'redux-promise-middleware';
+import createSocketIoMiddleware from 'redux-socket.io';
+import thunk from 'redux-thunk';
 import io from 'socket.io-client';
 import rootReducer from './rootReducer';
+import storeEvents from './storeEvents';
 
 const socket = io('http://localhost:3000');
 const socketIoMiddleware = createSocketIoMiddleware(socket, 'SERVER_');
@@ -61,13 +62,9 @@ const configureStore = (initialState = { user: userFromServer }) => {
 
   // Create Store
   const store = createStore(rootReducer, initialState, enhancer);
+  storeEvents(socket, store);
+
   return store;
-
-  socket.on('connect_timeout', () => store.dispatch({ type: 'DISCONNECT' }));
-  socket.on('connect_error', () => store.dispatch({ type: 'DISCONNECT' }));
-  socket.on('reconnect_error', () => store.dispatch({ type: 'DISCONNECT' }));
-  socket.on('reconnect', () => store.dispatch({ type: 'RECONNECT' }));
-
 };
 
 export { configureStore, history };

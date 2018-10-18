@@ -1,13 +1,12 @@
 'use strict';
 
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import React from 'react';
 import { expect } from 'chai';
-import { render } from 'enzyme';
-import Login from '../src/Components/Login/Login.jsx';
+import Enzyme, { render } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Nightmare from 'nightmare';
+import React from 'react';
 import server from '../server/server';
+import Login from '../src/Components/Login/Login.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -41,7 +40,9 @@ describe('<Login />', function() {
       expect(buttons[0].attribs.type).to.contain('submit');
     });
   });
-  describe('Integration', () => {
+
+  describe('Integration', function () {
+    this.timeout(10000);
     const url = 'http://localhost:8888/';
     let app;
     let nightmare;
@@ -51,9 +52,7 @@ describe('<Login />', function() {
     });
 
     beforeEach(() => {
-      nightmare = Nightmare({
-        show: true,
-      })
+      nightmare = Nightmare()
     });
 
     after(() => {
@@ -63,17 +62,16 @@ describe('<Login />', function() {
     it('Should redirect user to waiting when logging in', (done) => {
       nightmare
         .goto(url)
-        .type('#email', 'string@rick.com')
-        .type('#password', 'password')
+        .type('#email', 'anthony@origincodeacademy.com')
+        .type('#password', 'test')
         .click('#submit')
-        .wait('#waiting')
-        .evaluate(() => document.getElementById('waiting').innerText)
+        .wait(2000)
+        .evaluate(() => document.location.hash)
         .end()
         .then(text => {
-          expect(text).to.equal('Waiting!')
+          expect(text).to.not.equal('#/')
           done()
         })
     })
-
-} )
+  });
 });

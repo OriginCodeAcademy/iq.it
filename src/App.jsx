@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import Game from './Components/Game';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Waiting from './Components/Waiting';
@@ -18,6 +16,7 @@ class App extends Component {
             <Route exact path="/" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/waiting" component={Waiting} />
+            <Route path="/game" component={Game} />
           </Switch>
         </div>
       </Router>

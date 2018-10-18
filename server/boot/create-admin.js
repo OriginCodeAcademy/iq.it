@@ -9,10 +9,10 @@ module.exports = (app) => {
   },
     {
       'username': 'Coach',
-      'email': 'john@doe.com',
-      'firstName': 'Sponge',
-      'lastName': 'Bob',
-      'password': 'opensesame',
+      'email': 'instructor@origincodeacademy.com',
+      'firstName': 'Anthony',
+      'lastName': 'Valera',
+      'password': 'password',
     },
     (err, player) => {
       if (err) console.log(err);

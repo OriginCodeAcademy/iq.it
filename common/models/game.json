@@ -9,21 +9,16 @@
   "properties": {
     "winner": {
       "type": "object",
-      "required": true
+      "required": false
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "closed"    
     }
   },
   "validations": [],
   "relations": {
-    "cards": {
-      "type": "hasMany",
-      "model": "card",
-      "foreignKey": "",
-      "options": {
-        "validate": false,
-        "forceId": false,
-        "persistent": true
-      }
-    },
     "results": {
       "type": "hasMany",
       "model": "result",

@@ -1,9 +1,17 @@
 'use strict';
 
-module.exports = function(Game) {
-  Game.getPlayers = function(id, cb) {
-    const { Player, Result } = Game.app.models;
-    Result.find({where: {gameId: id}})
+module.exports = function (Game) {
+
+  Game.getPlayers = function (id, cb) {
+    const {
+      Player,
+      Result
+    } = Game.app.models;
+    Result.find({
+        where: {
+          gameId: id
+        }
+      })
       .then((results) => {
         return Promise.all(results.map((result) => {
           return Player.findById(result.playerId)
@@ -17,8 +25,18 @@ module.exports = function(Game) {
 
   Game.remoteMethod('getPlayers', {
     description: 'Returns all players from a game.',
-    accepts: {arg: 'id', type: 'number'},
-    http: {path: '/getPlayers', verb: 'get'},
-    returns: {arg: 'data', type: 'object', root: true},
+    accepts: {
+      arg: 'id',
+      type: 'number'
+    },
+    http: {
+      path: '/getPlayers',
+      verb: 'get'
+    },
+    returns: {
+      arg: 'data',
+      type: 'object',
+      root: true
+    },
   });
 };
