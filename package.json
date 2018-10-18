@@ -7,11 +7,11 @@
   },
   "scripts": {
     "babel": "babel src --out-file client/bundle.js",
-    "build": "webpack -w",
+    "build": "webpack",
     "lint": "eslint .",
     "start": "node .",
     "posttest": "",
-    "test": "mocha test/setup.js test/**/*.spec.js --exit"
+    "test": "npm run build && mocha test/setup.js test/**/*.spec.js --exit"
   },
   "dependencies": {
     "axios": "^0.18.0",
