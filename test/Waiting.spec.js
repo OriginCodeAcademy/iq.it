@@ -29,7 +29,8 @@ describe('<Waiting />', function() {
     });
   });
 
-  describe('integration', () => {
+  describe('integration', function() {
+    this.timeout(10000);
     const url = 'http://localhost:8888/#/waiting';
     let app;
     let nightmare;
