@@ -3,7 +3,7 @@ jobs:
   build-job:
     working_directory: ~/iq.it
     docker:
-      - image: circleci/node:8.11.0
+      - image: circleci/node:latest-browsers
     steps:
       - checkout
       - run:
