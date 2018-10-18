@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { postLogin, updateEmail, updatePassword } from './actions';
 import { Redirect } from 'react-router';
+import { postLogin, updateEmail, updatePassword } from './actions';
 
 export default class Login extends Component {
   constructor(props) {

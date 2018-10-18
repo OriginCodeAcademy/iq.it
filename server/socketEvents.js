@@ -4,12 +4,15 @@ const eventHandler = (socket, event) => {
   socket.emit('event:ack', event);
 };
 
-const actionHandler = (socket, action) => {
+const actionHandler = (socket, action, app) => {
   const { type, payload } = action;
 
   switch (type) {
     case 'SERVER_WAITING':
-      console.log('cLiEnT HAS DiSpATchED WaItInG');
+      socket.broadcast.emit('start_game', true);
+      break;
+    case 'SERVER_START_GAME_FULFILLED':
+      socket.broadcast.emit('start_game', true);
       break;
     default:
       break;

@@ -1,13 +1,12 @@
 'use strict';
 
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import React from 'react';
 import { expect } from 'chai';
-import { render } from 'enzyme';
-import Waiting from '../src/Components/Waiting/Waiting.jsx';
+import Enzyme, { render } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Nightmare from 'nightmare';
+import React from 'react';
 import server from '../server/server';
+import Waiting from '../src/Components/Waiting/Waiting.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -40,9 +39,7 @@ describe('<Waiting />', function() {
     });
 
     beforeEach(() => {
-      nightmare = Nightmare({
-        show: true,
-      })
+      nightmare = Nightmare()
     });
 
     after(() => {
@@ -61,5 +58,5 @@ describe('<Waiting />', function() {
         })
     })
 
-} )
+  })
 });

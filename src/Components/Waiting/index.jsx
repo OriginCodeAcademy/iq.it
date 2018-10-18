@@ -3,8 +3,10 @@ import Waiting from './Waiting';
 
 function mapStateToProps(store) {
   return {
-    userId: store.loginReducer.userId
+    userId: store.user.userId,
+    isAdmin: store.user.admin,
+    gameStarted: store.game.started,
   }
 }
 
-export default connect(mapStateToProps)(Waiting)
+export default connect(mapStateToProps)(Waiting);

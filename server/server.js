@@ -34,10 +34,10 @@ boot(app, __dirname, function(err) {
       console.log(`a user connected: ${socket.client.id}`);
 
       socket.on('event', (event) => {
-        socketEvents.eventHandler(socket, event);
+        socketEvents.eventHandler(socket, event, app);
       });
       socket.on('action', (action) => {
-        socketEvents.actionHandler(socket, action);
+        socketEvents.actionHandler(socket, action, app);
       });
 
       // socket.on('chat message', function(msg) {
