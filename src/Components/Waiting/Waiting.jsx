@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { startGame, checkGameStatus } from '../Game/actions';
-import { generateActionForCheckingAdmin, setWaitingStatus } from './actions';
+import { checkGameStatus, startGame } from '../Game/actions';
+import { generateActionForCheckingAdmin } from './actions';
 
 export default class Waiting extends Component {
   constructor(props) {

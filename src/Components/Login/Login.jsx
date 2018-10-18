@@ -32,7 +32,7 @@ export default class Login extends Component {
     }
 
     return (
-      <div>
+      <div id="login">
         <nav>
           <ul>
             <li><a href="#/register">Register</a></li>
