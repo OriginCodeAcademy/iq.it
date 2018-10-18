@@ -41,8 +41,7 @@ describe('<Login />', function() {
     });
   });
 
-  describe('Integration', function () {
-    this.timeout(10000);
+  describe('Integration', () => {
     const url = 'http://localhost:8888/';
     let app;
     let nightmare;
