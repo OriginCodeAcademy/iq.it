@@ -1,7 +1,8 @@
 const initialState = {
   started: false,
+  activeCard: null,
   cards: [],
-  activeCard: null
+  selectedAnswer: null
 }
 
 export default function gameReducer(state = initialState, action) {
@@ -38,8 +39,15 @@ export default function gameReducer(state = initialState, action) {
         id: payload.id
       }
     }
+
+    case 'GET_CARDS_FOR_GAME_FULFILLED': {
+      return {
+        ...state,
+        cards: payload.map(card => ({...card, used: false}))
+      }
+    }
       
-    case 'SET_ACTIVE_CARD': { 
+    case 'SERVER_SET_ACTIVE_CARD': { 
       return {
         ...state,
         activeCard: payload,
@@ -47,10 +55,17 @@ export default function gameReducer(state = initialState, action) {
       }
     }
       
-    case 'GET_CARDS_FOR_GAME_FULFILLED': {
+    case 'SERVER_REMOVE_ACTIVE_CARD': {
       return {
         ...state,
-        cards: payload.map(card => ({...card, used: false}))
+        activeCard: null 
+      }
+    }
+      
+    case 'SET_ACTIVE_CARD': { 
+      return {
+        ...state,
+        activeCard: payload
       }
     }
       
@@ -61,6 +76,19 @@ export default function gameReducer(state = initialState, action) {
       }
     }
     
+    case 'CHOOSE_ANSWER': {
+      return {
+        ...state,
+        selectedAnswer: payload
+      }
+    }
+    case 'SUBMIT_ANSWER_FULFILLED': {
+      return {
+        ...state,
+        selectedAnswer: null,
+        activeCard: null
+      }
+    }
     default:
       return state;
   }

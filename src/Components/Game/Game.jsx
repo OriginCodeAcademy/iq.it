@@ -1,86 +1,60 @@
 import React, { Component } from 'react';
-import { deactivateCard, getCards, setActiveCard } from './actions';
-
+import AdminGame from '../AdminGame';
+import { chooseAnswer, submitAnswer } from './actions';
 export default class Game extends Component {
   constructor(props) {
     super(props);
-    this.selectCard = this.selectCard.bind(this);
-    this.deactivateCard = this.deactivateCard.bind(this);
+    this.chooseAnswer = this.chooseAnswer.bind(this);
+    this.submitAnswer = this.submitAnswer.bind(this);
   }
 
-  componentDidMount() {
+  chooseAnswer(e) {
     const { dispatch } = this.props;
-    dispatch(getCards());
+    dispatch(chooseAnswer(e.target.dataset.index));
   }
+  submitAnswer() {
+    const { dispatch, selectedAnswer, active, user, game } = this.props;
 
-  selectCard(e) { 
-    const { dispatch, cards } = this.props;
-    let card = cards.find(card => card.id === e.target.dataset.cardid);
-    card = {...card, used: true  }
-    dispatch(setActiveCard(card));
+    dispatch(submitAnswer({
+      "points": active.points,
+      "selected": active.answers[selectedAnswer],
+      "cardId": active.id,
+      "playerId": user.userId,
+      "gameId": game.id
+    }));
   }
-
-  deactivateCard() {
-    const { dispatch } = this.props;
-    dispatch(deactivateCard())
-  } 
-
   render() {
-    const { cards, active } = this.props;
-    let unused = cards.filter(card => !card.used); 
-    let used = cards.filter(card => card.used); 
+    const { user, active, selectedAnswer } = this.props;
+    console.log(selectedAnswer);
+    if (user.admin) {
+      return <AdminGame />;
+    }
     return (
       <div className="master">
         <h1>Game page</h1>
-        <div className="cards">
-          {
-            active && 
-            <div className="card-container">
-              <div className="card-sections">
-                <h2>Active Question</h2>
-                <div className='card'>
-                  <p>{active.question}</p>
-                  <ol>
-                    {
-                      active.answers.map((answer, index) =>
-                        <li key={active.id + index} className={answer.isCorrect ? 'correct' : 'incorrect'}>
-                          {answer.title}
-                        </li>
-                      )
-                    }
-                  </ol>
+        <div className="card-container">
+          <div className="card-sections">
+            {
+              !active ? <div>Waiting For Card</div>
+                : <div>
+                  <h2>Active Question</h2>
+                  <div className="card">
+                    <p>{active.question}</p>
+                    <ol>
+                      {
+                        active.answers.map((answer, index) =>
+                          <li className={selectedAnswer == index ? 'selected' : '' } key={active.id + index} data-index={index} onClick={this.chooseAnswer} >
+                            {answer.title}
+                          </li>
+                        )
+                      }
+                    </ol>
+                    <button onClick={this.submitAnswer}>Submit Answer</button>
+                  </div>
                 </div>
-                <div>
-                  <button onClick={ this.deactivateCard }>End Question</button>
-                </div>
+            }
               </div>
             </div>
-          }
-          <div className="card-container">
-            <div className="card-sections">
-              <h2>Unused Cards</h2>
-              {
-                unused.map(card => (
-                  <div key={card.id} className="card">
-                    <p>{card.question}</p>
-                    <button data-cardid={card.id} onClick={this.selectCard}>Select</button>
-                  </div>
-                ))
-              }
-            </div>
-            <div className="card-sections">
-              <h2>Used Cards</h2>
-              {
-                used.map(card => (
-                  <div key={card.id} className="card">
-                    <p>{card.question}</p>
-                    <button data-cardid={card.id} onClick={this.selectCard}>Select</button>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
       </div>
     )
   }

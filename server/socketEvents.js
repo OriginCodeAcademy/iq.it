@@ -14,6 +14,18 @@ const actionHandler = (socket, action, app) => {
     case 'SERVER_START_GAME_FULFILLED':
       socket.broadcast.emit('start_game', true);
       break;
+    case 'SERVER_SET_ACTIVE_CARD': {
+      socket.broadcast.emit('active_card', {
+        id: payload.id,
+        points: payload.points,
+        question: payload.question,
+        answers: payload.answers.map(answer => ({ title: answer.title })),
+      });
+      break;
+    }
+    case 'SERVER_REMOVE_ACTIVE_CARD':
+      socket.broadcast.emit('remove_card');
+      break;
     default:
       break;
   }

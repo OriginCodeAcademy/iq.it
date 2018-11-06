@@ -22,22 +22,27 @@ export function checkGameStatus() {
   }
 }
 
-export function getCards() {
-  return {
-    type: 'GET_CARDS_FOR_GAME',
-    payload: axios.get('/api/cards')
-      .then(({ data }) => data)
-  }
-}
-
 export function setActiveCard(card) {
   return {
     type: 'SET_ACTIVE_CARD',
     payload: card
-  }
+  } 
 }
-export function deactivateCard() {
+
+export function removeActiveCard() {
   return {
     type: 'REMOVE_ACTIVE_CARD'
+  }
+}
+export function chooseAnswer(index) {
+  return {
+    type: 'CHOOSE_ANSWER',
+    payload: index
+  }
+}
+export function submitAnswer(data) {
+  return {
+    type: 'SUBMIT_ANSWER',
+    payload: axios.post(`/api/games/${data.gameId}/results`, data)
   }
 }
