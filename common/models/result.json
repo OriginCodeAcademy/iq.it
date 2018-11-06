@@ -12,9 +12,7 @@
       "required": true
     },
     "selected": {
-      "type": [
-        "object"
-      ],
+      "type": "object",
       "required": true
     }
   },
