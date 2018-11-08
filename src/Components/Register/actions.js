@@ -7,11 +7,17 @@ export const register = ( user, dispatch ) =>
   payload: axios.post('/api/players', {
     firstName: user.firstName,
     lastName: user.lastName,
-    email: user.email,
-    password: user.password })
+    email: user.email.toLowerCase(),
+    password: user.password,
+    emailVerified: false
+   })
     .then(response => {
-      dispatch( postLogin({ email: user.email, password: user.password }))
+      dispatch( postLogin({ email: user.email, password: user.password }));
+      console.log('reg response: ', response);
       return response;
+    })
+    .catch((err) => {
+      console.log('results err: ', err.message);
     })
 });
 
