@@ -6,12 +6,10 @@ import loginReducer from './Components/Login/reducer';
 import registerReducer from './Components/Register/reducer';
 import waitingReducer from './Components/Waiting/reducer';
 import userReducer from './userReducer';
-import addCardReducer from './Components/AddCard/reducer';
 
 
 const rootReducers = combineReducers({
   
-  addCard: addCardReducer,
   user: userReducer,
   routing: routerReducer,
   game: gameReducer,
@@ -19,7 +17,7 @@ const rootReducers = combineReducers({
   loginReducer,
   registerReducer,
   waitingReducer
-  
+
 });
 
 export default rootReducers;
