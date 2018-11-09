@@ -33,6 +33,14 @@ export default class Game extends Component {
       <div className="master">
         <h1>Game page</h1>
         <div className="cards">
+          <div>
+            <p>
+              <a href="#/addCard">Add Cards</a>
+            </p>
+            <p>
+              <a href="#/manageCard">Manage Cards</a>
+            </p>
+          </div>
           {
             active && 
             <div className="card-container">
