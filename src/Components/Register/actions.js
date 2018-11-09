@@ -13,19 +13,17 @@ export const register = ( user, dispatch ) =>
    })
     .then(response => {
       dispatch( postLogin({ email: user.email, password: user.password }));
-      console.log('reg response: ', response);
       return response;
     })
-    .catch((err) => {
-      console.log('results err: ', err.message);
+    .catch((error) => {
+      throw error.response.data.error
     })
-});
-
-export const registerInput = (name, value) =>
-({
-  type: 'REGISTER_INPUT',
-  payload: {
-    [name]: value
-  }
-});
-
+  });
+  
+  export const registerInput = (name, value) =>
+  ({
+    type: 'REGISTER_INPUT',
+    payload: {
+      [name]: value
+    }
+  });

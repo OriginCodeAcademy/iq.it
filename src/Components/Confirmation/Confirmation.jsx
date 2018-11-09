@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { postLogin } from '../Login/actions';
+import { timedRedirect } from './actions';
 
 export default class Waiting extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
-    const { dispatch, email, password } = this.props;
-    // dispatch(postLogin({ email, password }));
+    console.log('inside componentDidMount');
+    const { dispatch } = this.props;
+    if (this.props.token) {
+      console.log('inside componentDidMount if');
+      setTimeout(function () {
+        dispatch(timedRedirect(true))
+      }, 3000)
+    }
   }
 
   render() {
-    if (this.props.token) {
+    if (this.props.direct) {
       return <Redirect push to="/waiting" />
     }
 
