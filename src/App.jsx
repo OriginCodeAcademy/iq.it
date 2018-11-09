@@ -5,6 +5,8 @@ import Game from './Components/Game';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Waiting from './Components/Waiting';
+import AddCard from './Components/AddCard';
+import ManageCard from './Components/ManageCard';
 
 class App extends Component {
   render() {
@@ -17,6 +19,8 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/waiting" component={Waiting} />
             <Route path="/game" component={Game} />
+            <Route path="/addCard" component={AddCard} />
+            <Route path="/manageCard" component={ManageCard} />
           </Switch>
         </div>
       </Router>
