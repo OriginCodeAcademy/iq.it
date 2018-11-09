@@ -17,10 +17,7 @@ export default function registerReducer(state = initialState, action) {
       }
     }
     case 'REGISTER_REJECTED': {
-      return {
-        ...state,
-        error: payload
-      }
+      return state
     }
     case 'REGISTER_INPUT': {
       return {

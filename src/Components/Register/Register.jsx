@@ -19,12 +19,12 @@ export default class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const { dispatch, firstName, lastName, email, password } = this.props;
 
     if (!this.props.email.includes('.', this.props.email.indexOf('@') + 2) || this.props.email.substring(this.props.email.lastIndexOf('.')).length <= 2) {
       alert('Email is not valid.');
     } else {
       if (this.props.confirmPassword === this.props.password) {
-        const { dispatch, firstName, lastName, email, password } = this.props;
         dispatch(register({ firstName, lastName, email, password }, dispatch ))
       } else {
         alert('Passwords do not match.');
@@ -36,9 +36,6 @@ export default class Register extends Component {
   render() {
     if (this.props.token) {
       return <Redirect push to="/confirmation" />
-    }
-    if (this.props.error) {
-      this.props.error.message.includes('Email already exists') ? alert('Email already exists. Use a different email address.') : alert('Unknown Error.');
     }
 
     return (

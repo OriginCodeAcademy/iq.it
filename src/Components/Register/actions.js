@@ -16,7 +16,10 @@ export const register = ( user, dispatch ) =>
       return response;
     })
     .catch((error) => {
-      throw error.response.data.error
+      if (error.response.data.error.message.includes('Email already exists')) {
+        alert('Email already exists. Use a different email address.')
+      } else { alert('Unknown error.') };
+      throw error
     })
   });
   
@@ -26,4 +29,10 @@ export const register = ( user, dispatch ) =>
     payload: {
       [name]: value
     }
+  });
+
+  export const clearError = (value) =>
+  ({
+    type: 'CLEAR_ERROR',
+    payload: value
   });
