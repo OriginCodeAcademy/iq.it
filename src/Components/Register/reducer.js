@@ -16,6 +16,9 @@ export default function registerReducer(state = initialState, action) {
         user: payload.data
       }
     }
+    case 'REGISTER_REJECTED': {
+      return state
+    }
     case 'REGISTER_INPUT': {
       return {
         ...state,
