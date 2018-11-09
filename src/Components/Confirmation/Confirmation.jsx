@@ -8,10 +8,8 @@ export default class Waiting extends Component {
   }
 
   componentDidMount() {
-    console.log('inside componentDidMount');
     const { dispatch } = this.props;
     if (this.props.token) {
-      console.log('inside componentDidMount if');
       setTimeout(function () {
         dispatch(timedRedirect(true))
       }, 3000)
