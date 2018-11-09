@@ -36,6 +36,7 @@ export default class Login extends Component {
         <nav>
           <ul>
             <li><a href="#/register">Register</a></li>
+            <li><a href="#/waiting">Waiting</a></li>
           </ul>
         </nav>
         <h1>Login!</h1>
