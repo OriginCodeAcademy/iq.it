@@ -16,11 +16,11 @@
     },
     "firstName": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "lastName": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "totalPoints": {
       "type": "number",

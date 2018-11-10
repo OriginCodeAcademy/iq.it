@@ -33,14 +33,22 @@ export default class Game extends Component {
       <div className="master">
         <h1>Game page</h1>
         <div className="cards">
+          <div>
+            <p>
+              <a href="#/addCard">Add Cards</a>
+            </p>
+            <p>
+              <a href="#/manageCard">Manage Cards</a>
+            </p>
+          </div>
           {
             active && 
             <div className="card-container">
               <div className="card-sections">
                 <h2>Active Question</h2>
-                <div className='card'>
+                <div className='card admin' >
                   <p>{active.question}</p>
-                  <ol>
+                  <ol >
                     {
                       active.answers.map((answer, index) =>
                         <li key={active.id + index} className={answer.isCorrect ? 'correct' : 'incorrect'}>
