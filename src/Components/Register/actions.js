@@ -11,9 +11,8 @@ export const register = ( user, dispatch ) =>
     password: user.password,
     emailVerified: false
    })
-    .then(response => {
+    .then(() => {
       dispatch( postLogin({ email: user.email, password: user.password }));
-      return response;
     })
     .catch((error) => {
       if (error.response.data.error.message.includes('Email already exists')) {
