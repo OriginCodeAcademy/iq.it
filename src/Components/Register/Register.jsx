@@ -19,47 +19,42 @@ export default class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { dispatch, firstName, lastName, email, password } = this.props;
 
-    if (!this.props.email.includes('.', this.props.email.indexOf('@') + 2) || this.props.email.substring(this.props.email.lastIndexOf('.')).length <= 2) {
-      alert('Email is not valid.');
+    if (this.props.confirmPassword === this.props.password) {
+      const { dispatch, firstName, lastName, email, password } = this.props;
+      dispatch(register({ firstName, lastName, email, password }, dispatch ))
     } else {
-      if (this.props.confirmPassword === this.props.password) {
-        dispatch(register({ firstName, lastName, email, password }, dispatch ))
-      } else {
-        alert('Passwords do not match.');
-      }
+      alert('Passwords do not match');
     }
-
   }
 
   render() {
     if (this.props.token) {
-      return <Redirect push to="/confirmation" />
+      return <Redirect push to="/waiting" />
     }
 
     return (
       <div className='registration-container'>
-        <div className='heading'>
+        <div class='heading'>
           <h1>Register!</h1>
         </div>
         <hr></hr>
-        <form onSubmit={this.handleSubmit} className='registration-form' autoComplete='on'>
+        <form onSubmit={this.handleSubmit} className='registration-form'>
 
           <label htmlFor='first-name' className='first-name-label'>First Name: </label>
-          <input onChange={this.handleChange} name='firstName' type='text' autoComplete='given-name' required/>
+          <input onChange={this.handleChange} name='firstName' type='text' required/>
 
           <label htmlFor='last-name' className='last-name-label'>Last Name: </label>
-          <input onChange={this.handleChange} name='lastName' type='text' autoComplete='family-name' required />
+          <input onChange={this.handleChange} name='lastName' type='text' required />
 
           <label htmlFor='email' className='email-label'>E-Mail: </label>
-          <input onChange={this.handleChange} name='email' type='email' autoComplete='email' required />
+          <input onChange={this.handleChange} name='email' type='email' required />
 
           <label htmlFor='password' className='password-label'>Create Password: </label>
-          <input onChange={this.handleChange} name='password' type='password' autoComplete='new-password' required />
+          <input onChange={this.handleChange} name='password' type='text' required />
 
           <label htmlFor='password-confirm' className='password-confirmation-label'>Confirm Password: </label>
-          <input onChange={this.handleChange} name='confirmPassword' type='password' autoComplete='new-password' required />
+          <input onChange={this.handleChange} name='confirmPassword' type='text' required />
 
           <button className='button submit' type='submit'>Register</button>
         </form>

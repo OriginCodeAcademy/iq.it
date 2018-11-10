@@ -6,7 +6,10 @@ module.exports = function(Result) {
     const result = ctx.instance;
     Result.app.models.Card.findById(result.cardId)
       .then(card => {
+        console.log(card);
         const correct = card.answers.filter(element => element.isCorrect)[0];
+        console.log(correct);
+        console.log(result.selected);
         if (result.selected.title === correct.title) {
           result.selected.isCorrect = true;
         }
