@@ -25,6 +25,7 @@ export default class Game extends Component {
   }
   render() {
     const { user, active, selectedAnswer } = this.props;
+    console.log(selectedAnswer);
     if (user.admin) {
       return <AdminGame />;
     }

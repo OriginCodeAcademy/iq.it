@@ -36,14 +36,15 @@ export default class Login extends Component {
         <nav>
           <ul>
             <li><a href="#/register">Register</a></li>
+            <li><a href="#/waiting">Waiting</a></li>
           </ul>
         </nav>
         <h1>Login!</h1>
         <form onSubmit={ this.submitLogin }>
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" autoComplete="email" onChange={this.handleEmail} />
+          <input type="email" id="email" onChange={this.handleEmail} />
           <label htmlFor="password">Password</label>
-          <input type="password" autoComplete="current-password" id="password" onChange={this.handlePassword} />
+          <input type="password" id="password" onChange={this.handlePassword} />
           <button type="submit" id="submit">Login</button>
         </form>
       </div>

@@ -5,7 +5,7 @@ function mapStateToProps(store) {
   return {
     userId: store.user.userId,
     isAdmin: store.user.admin,
-    gameStarted: store.game.started
+    gameStarted: store.game.started,
   }
 }
 

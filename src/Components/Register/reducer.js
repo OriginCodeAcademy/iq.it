@@ -12,15 +12,9 @@ export default function registerReducer(state = initialState, action) {
   switch (type) {
     case 'REGISTER_FULFILLED': {
       return {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
+        ...state,
+        user: payload.data
       }
-    }
-    case 'REGISTER_REJECTED': {
-      return state
     }
     case 'REGISTER_INPUT': {
       return {
