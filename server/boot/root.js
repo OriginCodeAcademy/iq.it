@@ -5,8 +5,11 @@ module.exports = function(server) {
   var router = server.loopback.Router();
   router.get('/', (req, res) => {
     const user = {
-      firstName: "test",
-      lastName: "testerson"
+      token: null,
+      userId: null,
+      admin: false
+      // firstName: "test",
+      // lastName: "testerson"
     }
     res.render('index', {user});
   });
