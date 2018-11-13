@@ -15,7 +15,14 @@
   },
   "AccessToken": {
     "dataSource": "MongoDB",
-    "public": false
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "player",
+        "foreignKey": "playerId"
+      }
+    }
   },
   "ACL": {
     "dataSource": "MongoDB",
@@ -45,15 +52,12 @@
     "public": true,
     "options": {
       "remoting": {
+        "emailVerificationRequired": true,
         "sharedMethods": {
           "getUserRole": true
         }
       }
     }
-  },
-  "accessToken": {
-    "dataSource": "MongoDB",
-    "public": true
   },
   "game": {
     "dataSource": "MongoDB",
