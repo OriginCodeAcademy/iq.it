@@ -42,6 +42,8 @@ export function chooseAnswer(index) {
   }
 }
 export function submitAnswer(data) {
+  // if the card/answer exist in state for the player, 
+  // PUT the new answer in the existing result
   return {
     type: 'SUBMIT_ANSWER',
     payload: axios.post(`/api/games/${data.gameId}/results`, data)

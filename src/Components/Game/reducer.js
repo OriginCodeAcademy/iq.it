@@ -8,7 +8,7 @@ const initialState = {
 
 export default function gameReducer(state = initialState, action) {
   const { type, payload } = action;
-  
+
   switch (type) {
     case 'SERVER_START_GAME_FULFILLED': {
       return {
@@ -17,14 +17,14 @@ export default function gameReducer(state = initialState, action) {
         id: payload.data.id
       }
     }
-      
+
     case 'GAME_STARTED': {
       return {
         ...state,
         started: true
       }
     }
-      
+
     case 'CHECK_GAME_STATUS_FULFILLED': {
 
       if (payload === 'closed') {
@@ -44,26 +44,26 @@ export default function gameReducer(state = initialState, action) {
     case 'GET_CARDS_FOR_GAME_FULFILLED': {
       return {
         ...state,
-        cards: payload.map(card => ({...card, used: false}))
+        cards: payload.map(card => ({ ...card, used: false }))
       }
     }
-      
-    case 'SERVER_SET_ACTIVE_CARD': { 
+
+    case 'SERVER_SET_ACTIVE_CARD': {
       return {
         ...state,
         activeCard: payload,
         cards: state.cards.map(card => card.id === payload.id ? { ...card, used: true } : card)
       }
     }
-      
+
     case 'SERVER_REMOVE_ACTIVE_CARD': {
       return {
         ...state,
-        activeCard: null 
+        activeCard: null
       }
     }
-      
-    case 'SET_ACTIVE_CARD': { 
+
+    case 'SET_ACTIVE_CARD': {
       //find result inside of history array where the result matches the card about to be active
       const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.id)
       //find their answer inside of the active card, and get the index of it
@@ -77,14 +77,14 @@ export default function gameReducer(state = initialState, action) {
         selectedAnswer: index
       }
     }
-      
+
     case 'REMOVE_ACTIVE_CARD': {
       return {
         ...state,
-        activeCard: null 
+        activeCard: null
       }
     }
-    
+
     case 'CHOOSE_ANSWER': {
       return {
         ...state,
@@ -92,13 +92,17 @@ export default function gameReducer(state = initialState, action) {
       }
     }
     case 'SUBMIT_ANSWER_FULFILLED': {
-    //need conditional to determine whether to write new object to store OR update existing with new answer,
-      return {
-        ...state,
-        selectedAnswer: null,
-        activeCard: null,
-        history: [...state.history, payload.data]
-            
+      const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.id)
+      if (historyItem) { console.log('historyItem found');
+       return; }
+      else {
+        console.log('historyItem not found, setting state now...')
+        return {
+          ...state,
+          selectedAnswer: null,
+          activeCard: null,
+          history: [...state.history, payload.data]
+        }
       }
     }
     default:
