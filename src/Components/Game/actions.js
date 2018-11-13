@@ -23,6 +23,7 @@ export function checkGameStatus() {
 }
 
 export function setActiveCard(card) {
+  // axios call to query the players results for answer of cardId?
   return {
     type: 'SET_ACTIVE_CARD',
     payload: card
