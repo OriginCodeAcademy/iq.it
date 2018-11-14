@@ -65,7 +65,7 @@ export default function gameReducer(state = initialState, action) {
 
     case 'SET_ACTIVE_CARD': {
       //find result inside of history array where the result matches the card about to be active
-      const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.id)
+      const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.id);
       //find their answer inside of the active card, and get the index of it
       let index = null;
       if (historyItem) {
@@ -91,14 +91,12 @@ export default function gameReducer(state = initialState, action) {
         selectedAnswer: payload
       }
     }
+
     case 'SUBMIT_ANSWER_FULFILLED': {
       //find cardId inside of history array where the result matches the cardId submitted and returned from the db
-      // BUG - wipes out state of other previous cards if previously answered card is answered again.
-      // but will ad new cards, OR will change state of previous card correctly if it's the only one in there.
-      const filteredArray = state.history.filter(item => item.cardId == payload.data.cardId );
-      const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.data.cardId)
+      const filteredArray = state.history.filter(item => item.cardId !== payload.data.cardId );
+      const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.data.cardId);
       if (historyItem) {
-        console.log('filtered' , filteredArray);
        return {
         ...state,
         selectedAnswer: null,
@@ -115,6 +113,7 @@ export default function gameReducer(state = initialState, action) {
         }
       }
     }
+
     default:
       return state;
   }

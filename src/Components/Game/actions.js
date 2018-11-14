@@ -34,14 +34,16 @@ export function removeActiveCard() {
     type: 'REMOVE_ACTIVE_CARD'
   }
 }
+
 export function chooseAnswer(index) {
   return {
     type: 'CHOOSE_ANSWER',
     payload: index
   }
 }
+
 export function submitAnswer(data, history) {
-  const historyItem = history.find(singleHistoryItem => singleHistoryItem.cardId)
+  const historyItem = history.find(singleHistoryItem => singleHistoryItem.cardId === data.cardId)
   if (historyItem) {
     return {
       type: 'SUBMIT_ANSWER',
