@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { addCard, addCardInput } from './actions';
 //import { Redirect } from 'react-router';
 
@@ -11,12 +12,6 @@ export default class AddCard extends Component {
 
   }
 
-//   handleChange(event) {
-//     const { dispatch } = this.props;
-//     const { name, value } = event.target;
-//     dispatch(addCardInput(name, value));
-//   }
-
   handleChange(event) {
     const { dispatch } = this.props;
     const { name, value, type, checked } = event.target;
@@ -28,12 +23,15 @@ export default class AddCard extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { newCard, dispatch } = this.props;
-    dispatch(addCard(newCard));
+    const { newCard, token, dispatch } = this.props;
+    dispatch(addCard(newCard, token));
   }
 
   render() {
-      const { newCard } = this.props;
+    const { newCard, isAdmin } = this.props;
+    if (isAdmin === false) {
+      return <Redirect push to="/" />
+    }
    
     return (
       <div className='addCard-container'>

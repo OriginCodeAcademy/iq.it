@@ -3,6 +3,8 @@ import AddCard from './AddCard';
 
 function mapStateToProps(store) {
   return {
+    token: store.user.token,
+    isAdmin: store.user.admin,
     newCard: store.addCard
   }
 }
