@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { getCards } from './actions';
 
 export default class ManageCard extends Component {
@@ -26,7 +27,10 @@ export default class ManageCard extends Component {
   } 
 
   render() {
-    const { cards } = this.props;
+    const { cards, isAdmin } = this.props;
+    if (!isAdmin) {
+      return <Redirect push to="/" />
+    }
     return (
       <div className="master">
         <h1>Manage Cards</h1>

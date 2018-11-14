@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-export const addCard = ( newCard ) =>
+export const addCard = ( newCard, token ) =>
 ({ 
   type: 'ADDCARD',
   payload: axios.post('/api/cards', {
@@ -22,7 +22,7 @@ export const addCard = ( newCard ) =>
     {   title: newCard.answerTitle4,
         isCorrect: newCard.isCorrect4
     }]
-  }).then(response => {
+  }, { headers: { 'Content-Type': 'application/json', 'Authorization': token } }).then(response => {
         return response;
   })
 });

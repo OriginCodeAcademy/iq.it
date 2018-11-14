@@ -58,8 +58,8 @@ describe('<Login />', function() {
     it('Should redirect user to waiting when logging in', (done) => {
       nightmare
         .goto(url)
-        .type('#email', 'anthony@origincodeacademy.com')
-        .type('#password', 'test')
+        .type('#email', 'instructor@origincodeacademy.com')
+        .type('#password', 'password')
         .click('#submit')
         .wait(2000)
         .evaluate(() => document.location.hash)
