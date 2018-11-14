@@ -6,7 +6,8 @@ function mapStateToProps(store) {
     user: store.user,
     game: store.game,
     active: store.game.activeCard,
-    selectedAnswer: store.game.selectedAnswer
+    selectedAnswer: store.game.selectedAnswer,
+    history: store.game.history
   }
 }
 

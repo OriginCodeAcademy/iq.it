@@ -34,15 +34,25 @@ export function removeActiveCard() {
     type: 'REMOVE_ACTIVE_CARD'
   }
 }
+
 export function chooseAnswer(index) {
   return {
     type: 'CHOOSE_ANSWER',
     payload: index
   }
 }
-export function submitAnswer(data) {
-  return {
-    type: 'SUBMIT_ANSWER',
-    payload: axios.post(`/api/games/${data.gameId}/results`, data)
-  }
+
+export function submitAnswer(data, history) {
+  const historyItem = history.find(singleHistoryItem => singleHistoryItem.cardId === data.cardId)
+  if (historyItem) {
+    return {
+      type: 'SUBMIT_ANSWER',
+      payload: axios.put(`/api/results/${historyItem.id}`, data)
+    }
+  } else {
+      return {
+        type: 'SUBMIT_ANSWER',
+        payload: axios.post(`/api/games/${data.gameId}/results`, data)
+      }
+    } 
 }
