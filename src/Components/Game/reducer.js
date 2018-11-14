@@ -92,11 +92,21 @@ export default function gameReducer(state = initialState, action) {
       }
     }
     case 'SUBMIT_ANSWER_FULFILLED': {
-      const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.id)
-      if (historyItem) { console.log('historyItem found');
-       return; }
+      //find cardId inside of history array where the result matches the cardId submitted and returned from the db
+      // BUG - wipes out state of other previous cards if previously answered card is answered again.
+      // but will ad new cards, OR will change state of previous card correctly if it's the only one in there.
+      const filteredArray = state.history.filter(item => item.cardId == payload.data.cardId );
+      const historyItem = state.history.find(singleHistoryItem => singleHistoryItem.cardId === payload.data.cardId)
+      if (historyItem) {
+        console.log('filtered' , filteredArray);
+       return {
+        ...state,
+        selectedAnswer: null,
+        activeCard: null,
+        history: [...filteredArray, payload.data]
+      }
+       }
       else {
-        console.log('historyItem not found, setting state now...')
         return {
           ...state,
           selectedAnswer: null,
@@ -109,35 +119,3 @@ export default function gameReducer(state = initialState, action) {
       return state;
   }
 }
-
-// state.history = [{
-//   points: 1,
-//   selected: {
-//     title: '== checks for loose equality while === checks for strict equality',
-//     isCorrect: false
-//   },
-//   id: '5be9d87843767a68852d1c5d',
-//   cardId: '5be210b3d383190a92b8d6ba',
-//   playerId: '5be1ef81d383190a92b8d6b3',
-//   gameId: '5be1f10bd383190a92b8d6b4'
-// }]
-
-// payload = {
-//   id: '5be210b3d383190a92b8d6ba',
-//   points: 1,
-//   question: 'What is the difference between = and === ?',
-//   answers: [
-//     {
-//       title: '= assigns while === compares'
-//     },
-//     {
-//       title: '== checks for loose equality while === checks for strict equality'
-//     },
-//     {
-//       title: '=== assigns while == compares'
-//     },
-//     {
-//       title: '=== checks for loose equality while == checks for strict equality'
-//     }
-//   ]
-// }

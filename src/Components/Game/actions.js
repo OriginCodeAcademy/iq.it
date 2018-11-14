@@ -23,7 +23,6 @@ export function checkGameStatus() {
 }
 
 export function setActiveCard(card) {
-  // axios call to query the players results for answer of cardId?
   return {
     type: 'SET_ACTIVE_CARD',
     payload: card
@@ -41,11 +40,17 @@ export function chooseAnswer(index) {
     payload: index
   }
 }
-export function submitAnswer(data) {
-  // if the card/answer exist in state for the player, 
-  // PUT the new answer in the existing result
-  return {
-    type: 'SUBMIT_ANSWER',
-    payload: axios.post(`/api/games/${data.gameId}/results`, data)
-  }
+export function submitAnswer(data, history) {
+  const historyItem = history.find(singleHistoryItem => singleHistoryItem.cardId)
+  if (historyItem) {
+    return {
+      type: 'SUBMIT_ANSWER',
+      payload: axios.put(`/api/results/${historyItem.id}`, data)
+    }
+  } else {
+      return {
+        type: 'SUBMIT_ANSWER',
+        payload: axios.post(`/api/games/${data.gameId}/results`, data)
+      }
+    } 
 }
