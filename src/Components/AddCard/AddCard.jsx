@@ -29,7 +29,7 @@ export default class AddCard extends Component {
 
   render() {
     const { newCard, isAdmin } = this.props;
-    if (!isAdmin) {
+    if (isAdmin === false) {
       return <Redirect push to="/" />
     }
    

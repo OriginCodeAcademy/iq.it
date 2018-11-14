@@ -5,7 +5,7 @@ function mapStateToProps(store) {
   return {
     user: store.user,
     token: store.loginReducer.token,
-    isAdmin: store.user.isAdmin,
+    isAdmin: store.user.admin,
     cards: store.game.cards
   }
 }

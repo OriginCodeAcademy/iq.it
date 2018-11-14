@@ -28,7 +28,8 @@ export default class ManageCard extends Component {
 
   render() {
     const { cards, isAdmin } = this.props;
-    if (!isAdmin) {
+    if (isAdmin === false) {
+      
       return <Redirect push to="/" />
     }
     return (
