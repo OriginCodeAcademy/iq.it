@@ -10,7 +10,7 @@ module.exports = function(Player) {
   };
 
   Player.remoteMethod('isAdmin', {
-    description: 'Returns a boolean if user is a player-coach',
+    description: 'Returns a boolean if Player is a player-coach',
     accepts: { arg: 'id', type: 'string' },
     http: { path: '/isAdmin', verb: 'get' },
     returns: { arg: 'data', type: 'boolean', root: true },
