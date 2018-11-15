@@ -12,6 +12,7 @@ const initialState = {
           direct: payload
         }
       }
+      
       default: {
         return state
       }

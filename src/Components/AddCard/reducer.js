@@ -40,10 +40,6 @@ const initialState = {
           ...payload
         }
       }
-     
-      case 'ADDCARD_REJECTED': {
-        return state
-      }
 
       default: {
         return state

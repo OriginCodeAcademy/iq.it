@@ -16,10 +16,6 @@ const initialState = {
           ...payload
         }
       }
-     
-      case 'DELETECARD_REJECTED': {
-        return state
-      }
 
       default: {
         return state

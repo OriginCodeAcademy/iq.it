@@ -9,8 +9,8 @@ export default class Game extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getCards());
+    const { token, dispatch } = this.props;
+    dispatch(getCards(token));
   }
 
   selectCard(e) { 

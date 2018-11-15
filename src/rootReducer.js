@@ -10,7 +10,6 @@ import addCardReducer from './Components/AddCard/reducer';
 
 
 const rootReducers = combineReducers({
-
   addCard: addCardReducer,
   user: userReducer,
   routing: routerReducer,
@@ -19,7 +18,6 @@ const rootReducers = combineReducers({
   loginReducer,
   registerReducer,
   waitingReducer
-
 });
 
 export default rootReducers;

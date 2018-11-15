@@ -19,12 +19,12 @@ export default class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { dispatch, firstName, lastName, email, password } = this.props;
+    const { dispatch, firstName, lastName, email, password, confirmPassword } = this.props;
 
-    if (!this.props.email.includes('.', this.props.email.indexOf('@') + 2) || this.props.email.substring(this.props.email.lastIndexOf('.')).length <= 2) {
+    if (!email.includes('.', email.indexOf('@') + 2) || email.substring(email.lastIndexOf('.')).length <= 2) {
       alert('Email is not valid.');
     } else {
-      if (this.props.confirmPassword === this.props.password) {
+      if (confirmPassword === password) {
         dispatch(register({ firstName, lastName, email, password }, dispatch ))
       } else {
         alert('Passwords do not match.');

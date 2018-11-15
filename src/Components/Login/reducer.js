@@ -13,18 +13,21 @@ export default function loginReducer(state = initialState, action) {
         error: payload
       }
     }
+
     case 'UPDATE_EMAIL': {
       return {
         ...state,
         email: payload
       }
     }
+
     case 'UPDATE_PASSWORD': {
       return {
         ...state,
         password: payload
       }
     }
+    
     default: {
       return state
     }

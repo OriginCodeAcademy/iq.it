@@ -8,8 +8,6 @@ module.exports = function(server) {
       token: null,
       userId: null,
       admin: false
-      // firstName: "test",
-      // lastName: "testerson"
     }
     res.render('index', {user});
   });
