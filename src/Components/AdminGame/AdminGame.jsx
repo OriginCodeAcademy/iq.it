@@ -46,7 +46,7 @@ export default class Game extends Component {
             <div className="card-container">
               <div className="card-sections">
                 <h2>Active Question</h2>
-                <div className='card admin' >
+                <div className='card admin' id='adminactivecard' >
                   <p>{active.question}</p>
                   <ol >
                     {
