@@ -4,7 +4,7 @@ import ManageCard from './ManageCard';
 function mapStateToProps(store) {
   return {
     user: store.user,
-    token: store.loginReducer.token,
+    token: store.user.token,
     isAdmin: store.user.admin,
     cards: store.game.cards
   }

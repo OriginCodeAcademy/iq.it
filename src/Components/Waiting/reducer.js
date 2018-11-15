@@ -10,6 +10,7 @@ export default function waitingReducer(state = initialState, action) {
         waiting: payload
       }
     }
+    
     default: {
       return state
     }

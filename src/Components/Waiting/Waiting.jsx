@@ -10,11 +10,11 @@ export default class Waiting extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    const { dispatch, userId } = this.props;
+    const { token, dispatch, userId } = this.props;
 
     if (userId) {
-      dispatch(generateActionForCheckingAdmin(userId));
-      dispatch(checkGameStatus());
+      dispatch(generateActionForCheckingAdmin(userId, token));
+      dispatch(checkGameStatus(token));
     }
   }
 

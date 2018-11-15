@@ -9,8 +9,8 @@ export default class ManageCard extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getCards());
+    const { token, dispatch } = this.props;
+    dispatch(getCards(token));
   }
 
   selectCard(e) { 
@@ -19,12 +19,6 @@ export default class ManageCard extends Component {
     card = {...card, used: true  }
     dispatch(serverSetActiveCard(card));
   }
-
-  deleteCard() {
-    const { dispatch } = this.props;
-    console.log('make a delete function')
-    //dispatch(serverRemoveActiveCard())
-  } 
 
   render() {
     const { cards, isAdmin } = this.props;

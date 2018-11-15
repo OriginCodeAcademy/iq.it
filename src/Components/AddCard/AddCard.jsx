@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { addCard, addCardInput } from './actions';
-//import { Redirect } from 'react-router';
 
 export default class AddCard extends Component {
   constructor(props) {

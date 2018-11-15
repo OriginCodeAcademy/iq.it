@@ -19,15 +19,14 @@ export default function registerReducer(state = initialState, action) {
         confirmPassword: ''
       }
     }
-    case 'REGISTER_REJECTED': {
-      return state
-    }
+
     case 'REGISTER_INPUT': {
       return {
         ...state,
         ...payload
       }
     }
+    
     default: {
       return state
     }
