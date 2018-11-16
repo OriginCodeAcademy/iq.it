@@ -23,10 +23,6 @@ describe('<Login />', function() {
       const anchors = wrapper.find('a');
       expect(anchors[0].attribs.href).to.contain('#/register');
     });
-    it('Should have a waiting link', () => {
-      const anchors = wrapper.find('a');
-      expect(anchors[1].attribs.href).to.contain('#/waiting');
-    });
     it('Should have an email input field', () => {
       const inputs = wrapper.find('input');
       expect(inputs[0].attribs.type).to.contain('email');
@@ -62,8 +58,8 @@ describe('<Login />', function() {
     it('Should redirect user to waiting when logging in', (done) => {
       nightmare
         .goto(url)
-        .type('#email', 'anthony@origincodeacademy.com')
-        .type('#password', 'test')
+        .type('#email', 'instructor@origincodeacademy.com')
+        .type('#password', 'password')
         .click('#submit')
         .wait(2000)
         .evaluate(() => document.location.hash)

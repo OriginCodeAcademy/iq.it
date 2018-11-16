@@ -13,7 +13,7 @@ export default class Game extends Component {
     dispatch(chooseAnswer(e.target.dataset.index));
   }
   submitAnswer() {
-    const { dispatch, selectedAnswer, active, user, game } = this.props;
+    const { dispatch, selectedAnswer, active, user, token, game, history } = this.props;
 
     dispatch(submitAnswer({
       "points": active.points,
@@ -21,11 +21,11 @@ export default class Game extends Component {
       "cardId": active.id,
       "playerId": user.userId,
       "gameId": game.id
-    }));
+    }, history, token
+    ));
   }
   render() {
     const { user, active, selectedAnswer } = this.props;
-    console.log(selectedAnswer);
     if (user.admin) {
       return <AdminGame />;
     }

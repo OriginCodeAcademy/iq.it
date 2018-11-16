@@ -16,11 +16,11 @@
     },
     "firstName": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "lastName": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "totalPoints": {
       "type": "number",
@@ -44,7 +44,42 @@
       }
     }
   },
-  "acls": [],
-  "methods": {
-  }
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "PLAYER_COACH",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": [
+        "isAdmin",
+        "login",
+        "logout"
+      ]
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
 }

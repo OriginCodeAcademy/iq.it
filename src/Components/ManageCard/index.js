@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import Waiting from './Waiting';
+import ManageCard from './ManageCard';
 
 function mapStateToProps(store) {
   return {
-    userId: store.user.userId,
+    user: store.user,
     token: store.user.token,
     isAdmin: store.user.admin,
-    gameStarted: store.game.started
+    cards: store.game.cards
   }
 }
 
-export default connect(mapStateToProps)(Waiting);
+export default connect(mapStateToProps)(ManageCard);
